@@ -1,0 +1,10 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8vh;
+    font-size: 4vh;
+    color: rgba(232, 131, 58, 1);
+    background-color: rgba(195, 207, 217, 1);
+
+}
