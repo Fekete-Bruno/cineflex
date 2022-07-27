@@ -14,8 +14,7 @@ export default function MainScreen(){
             setMovies(response.data);
         });
         promise.catch((error)=>{
-            const errorStatus = (error.response.status);
-            setMovies([{id:-1, title:'Error '+errorStatus, posterURL:`https://http.dog/${errorStatus}.jpg`}])});
+            setMovies([{id:-1, title:error.message, posterURL:`https://http.dog/${error.response.status}.jpg`}])});
     },[]);
 
    
