@@ -8,8 +8,10 @@ export default function Sessions(){
     return(
         <div>
             <InnerHeader text={"Selecione o horário"} />
-            <div className="showtimes">
-                HORARIOS
+            <div className="dates">
+                {movieInfoHARD.days.map((date)=>{
+                    return(<Date date={date} key={date.id}/>);
+                })}
             </div>
             <div className="footer">
                 <img src={movieInfoHARD.posterURL}/>
@@ -17,4 +19,19 @@ export default function Sessions(){
             </div>
         </div>
     );
+}
+
+function Date({date}){
+    
+    return(<div className="date">
+                        {date.date}
+                        <div className="showtimes">
+                        {date.showtimes.map((time)=>{return(<Showtime time={time} key={time.id}/>);})}
+                        </div>
+                        </div>
+                        );
+}
+
+function Showtime({time}){
+    return(<div className="time" key={time.id}>{time.name}</div>);
 }

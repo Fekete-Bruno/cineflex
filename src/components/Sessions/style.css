@@ -22,3 +22,39 @@
     font-size: 2.5vh;
     color: rgba(41, 56, 69, 1);
 }
+.dates{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2vh;
+    margin-bottom: 16vh;
+}
+
+.date{
+    padding: 2vw;
+    width:100vw;
+    height: 7vh;
+}
+
+.showtimes{
+    display: flex;
+}
+.time{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4vh;
+    width:12vw;
+    background-color: rgba(232, 131, 58, 1);
+    border-radius: 3px;
+    margin: 3vw;
+}
+
+.time:hover{
+    cursor: pointer;
+    background-color: rgba(232, 131, 58, 0.9);
+}
+
+.time:active{
+    transform: translateY(-3px);
+}
