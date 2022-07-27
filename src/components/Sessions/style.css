@@ -1,3 +1,8 @@
+a{
+    text-decoration: none;
+    color: rgba(41, 56, 69, 1);
+}
+
 .footer{
     display: flex;
     box-sizing: border-box;
@@ -34,6 +39,7 @@
     padding: 2vw;
     width:100vw;
     height: 7vh;
+    color: rgba(41, 56, 69, 1);
 }
 
 .showtimes{
