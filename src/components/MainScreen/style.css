@@ -17,9 +17,9 @@
 }
 
 .movie img{
-    width: 90%;
+    width: 95%;
     height: 90%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .movie:hover{

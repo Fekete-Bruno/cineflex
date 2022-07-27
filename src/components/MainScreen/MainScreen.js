@@ -34,7 +34,7 @@ export default function MainScreen(){
 
 function Movie({id,title,posterURL}){
     return(
-        <Link to={{pathname:`/sessoes/${id}`,idMovie:{id}}}>
+        <Link to={`/sessoes/${id}`} state={id}>
         <div className="movie">
             <img src={posterURL} alt={title}/>
         </div>
