@@ -7,12 +7,13 @@ export default function MainScreen(){
     const [movies,setMovies]=useState(null);
 
     useEffect(()=>{
-        const promise = axios.get(apiURL);
+        const promise = axios.get('apiURL');
         promise.then((response)=>{
-            setMovies(response.data)
-            
+            setMovies(response.data);
         });
-        promise.catch((error)=>{console.log(error.response.status);});
+        promise.catch((error)=>{
+            const errorStatus = (error.response.status);
+            setMovies([{id:-1, title:'Error '+errorStatus, posterURL:`https://http.dog/${errorStatus}.jpg`}])});
     },[]);
 
     return(
