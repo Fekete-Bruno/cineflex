@@ -1,13 +1,15 @@
-import "./style.css"
+import "./style.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import InnerHeader from "../InnerHeader/InnerHeader";
 
 export default function MainScreen(){
     const apiURL = 'https://mock-api.driven.com.br/api/v5/cineflex/movies'
     const [movies,setMovies]=useState(null);
 
     useEffect(()=>{
-        const promise = axios.get('apiURL');
+        const promise = axios.get(apiURL);
         promise.then((response)=>{
             setMovies(response.data);
         });
@@ -16,14 +18,14 @@ export default function MainScreen(){
             setMovies([{id:-1, title:'Error '+errorStatus, posterURL:`https://http.dog/${errorStatus}.jpg`}])});
     },[]);
 
+   
+
     return(
         <div>
-            <div className="inner-screen-header">
-                Selecione o filme
-            </div>
+            <InnerHeader text={"Selecione o filme"} />
             <div className="movies">
                 {(movies)?(movies.map((movie) => {
-                    return(<Movie key={movie.id} posterURL={movie.posterURL} title={movie.title} />);
+                    return(<Movie key={movie.id} id={movie.id} posterURL={movie.posterURL} title={movie.title} />);
                     })):('Carregando...')
                 }
             </div>
@@ -31,10 +33,12 @@ export default function MainScreen(){
     );
 }
 
-function Movie({title,posterURL}){
+function Movie({id,title,posterURL}){
     return(
+        <Link to={{pathname:`/sessoes/${id}`,idMovie:{id}}}>
         <div className="movie">
             <img src={posterURL} alt={title}/>
         </div>
+        </Link>
     );
 }
