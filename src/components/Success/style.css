@@ -1,0 +1,41 @@
+.green{
+    color: rgba(36, 122, 107, 1);
+}
+
+.success-content{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: 10vw;
+    font-size: 3vh;
+    color: rgba(41, 56, 69, 1);
+}
+
+.success-content div{
+    margin: 1.5vh;
+}
+
+a{
+    color: rgba(41, 56, 69, 1);
+    text-decoration: none;
+}
+
+.strong{
+    font-weight: bold;
+}
+
+.home{
+    margin:30vh;
+    background-color: rgba(232, 131, 58, 1); 
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.home:hover{
+    cursor: pointer;
+}
+
+.home:active{
+    transform: translateY(-3px);
+}

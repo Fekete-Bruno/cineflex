@@ -25,13 +25,15 @@ export default function Seats(){
                 <Seat key={seat.id} name={seat.name}/>
                 )})}
             </div>
+            <Link to="/sucesso"> {/* TEMPORARIOS PARA TESTES DE LAYOUT*/}
             <div className="footer">
-                <div className="img-container"><img src={seatsInfo.movie.posterURL}/></div>
+                <div className="img-container"><img src={seatsInfo.movie.posterURL} alt={seatsInfo.movie.title} /></div>
                 <div className="title">
                     {seatsInfo.movie.title} <br/>
                     {seatsInfo.day.weekday} - {seatsInfo.name}
                 </div>
             </div>
+            </Link>
             </>
         )}
         </div>
