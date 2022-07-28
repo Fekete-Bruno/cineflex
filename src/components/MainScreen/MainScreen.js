@@ -24,7 +24,7 @@ export default function MainScreen(){
             <InnerHeader text={"Selecione o filme"} />
             <div className="movies">
                 {(movies)?(movies.map((movie) => {
-                    return(<Movie key={movie.id} id={movie.id} posterURL={movie.posterURL} title={movie.title} />);
+                    return(<Movie key={movie.id} movieId={movie.id} posterURL={movie.posterURL} title={movie.title} />);
                     })):('Carregando...')
                 }
             </div>
@@ -32,9 +32,9 @@ export default function MainScreen(){
     );
 }
 
-function Movie({id,title,posterURL}){
+function Movie({movieId,title,posterURL}){
     return(
-        <Link to={`/sessoes/${id}`} state={id}>
+        <Link to={`/sessoes/${movieId}`}>
         <div className="movie">
             <img src={posterURL} alt={title}/>
         </div>

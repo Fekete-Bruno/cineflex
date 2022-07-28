@@ -13,8 +13,8 @@ export default function App(){
             <Header />
             <Routes>
                 <Route path="/" element={<MainScreen />} />
-                <Route path="/sessoes/:idFilme" element={<Sessions />} />
-                <Route path="/assentos/:idSessao" element={<Seats />} />
+                <Route path="/sessoes/:movieId" element={<Sessions />} />
+                <Route path="/assentos/:sessionId" element={<Seats />} />
             </Routes>
         </BrowserRouter>
     )

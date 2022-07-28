@@ -2,12 +2,11 @@ import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Seats(){
-    const location = useLocation();
-    const seatsId = location.state;
-    const apiURL= `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${seatsId}/seats`
+    const {sessionId} = useParams();
+    const apiURL= `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`
     const [seatsInfo, setSeatsInfo] = useState(null);
     useEffect(()=>{
         const promise = axios.get(apiURL);

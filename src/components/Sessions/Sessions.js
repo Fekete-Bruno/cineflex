@@ -2,11 +2,10 @@ import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Sessions(){
-    const location = useLocation();
-    const movieId = location.state;
+    const {movieId} = useParams();
     const apiURL= `https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`
     const [movieInfo, setMovieInfo] = useState(null);
     useEffect(()=>{
