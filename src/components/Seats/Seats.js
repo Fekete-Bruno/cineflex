@@ -2,9 +2,9 @@ import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams ,useNavigate} from "react-router-dom";
 
-export default function Seats(){
+export default function Seats({orderData}){
     const {sessionId} = useParams();
     const apiURL= `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`
     const [seatsInfo, setSeatsInfo] = useState(null);
@@ -17,8 +17,11 @@ export default function Seats(){
     },[])
 
     function addSeats(){
-        const newArray = seatsInfo.seats.filter((seat)=>{return (seat.clicked)}).map((seat)=>{return(seat.id)});
-        setSelectedSeats([...newArray]);
+        const newArrayIds = seatsInfo.seats.filter((seat)=>{return (seat.clicked)}).map((seat)=>{return(seat.id)});
+        const newArrayNames = seatsInfo.seats.filter((seat)=>{return (seat.clicked)}).map((seat)=>{return(seat.name)});
+        setSelectedSeats([...newArrayIds]);
+        orderData.seats=newArrayNames;
+        console.log(seatsInfo);
     }
 
     return(
@@ -33,7 +36,7 @@ export default function Seats(){
             </div>
 
             <Examples/>
-            <ClientData selectedSeats={selectedSeats}/>
+            <ClientData selectedSeats={selectedSeats} orderData={orderData} seatsInfo={seatsInfo}/>
 
             <div className="footer">
                 <div className="img-container"><img src={seatsInfo.movie.posterURL} alt={seatsInfo.movie.title} /></div>
@@ -86,10 +89,11 @@ function Examples(){
     );
 }
 
-function ClientData({selectedSeats}){
+function ClientData({selectedSeats, orderData, seatsInfo}){
     const[name,setName] = useState("");
     const[cpf,setCpf] = useState("");
     const postURL ="https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many"
+    const navigate = useNavigate();
     
     const regex = /^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/;
     
@@ -106,8 +110,15 @@ function ClientData({selectedSeats}){
                    name:name,
                    cpf:cpf, 
                 });
-            request.then(()=>console.log('Success!'));
-            request.catch(()=>console.log("error"))
+            request.then(()=>{
+                orderData.title = seatsInfo.movie.title;
+                orderData.date = seatsInfo.day.date;
+                orderData.time = seatsInfo.name;
+                orderData.client = name;
+                orderData.cpf = cpf;
+                navigate('/sucesso');
+            });
+            request.catch(()=>alert("Ocorreu um erro durante a requisição."))
             console.log(name,cpf,selectedSeats);
         }
     }
@@ -120,9 +131,7 @@ function ClientData({selectedSeats}){
             <div>CPF do comprador:</div>
 		    <input type="text" required value={cpf} onChange={e => setCpf(e.target.value)} />
             <div></div>
-            {/*<Link to="/sucesso">*/}
 		    <button type="submit">Reservar Assento(s)</button>
-            {/*</Link>*/}
 		</form>
 	);
 }
