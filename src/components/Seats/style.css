@@ -59,5 +59,6 @@
 }
 
 .true:hover{
+    cursor: pointer;
     background-color: rgba(141, 215, 207, 0.8);
 }

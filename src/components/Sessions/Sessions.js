@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 
 export default function Sessions(){
     const {movieId} = useParams();
-    const apiURL= `https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`
+    const apiURL= `https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieId}/showtimes`
     const [movieInfo, setMovieInfo] = useState(null);
     useEffect(()=>{
         const promise = axios.get(apiURL);

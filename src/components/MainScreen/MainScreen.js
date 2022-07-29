@@ -5,7 +5,7 @@ import axios from "axios";
 import InnerHeader from "../InnerHeader/InnerHeader";
 
 export default function MainScreen(){
-    const apiURL = 'https://mock-api.driven.com.br/api/v5/cineflex/movies'
+    const apiURL = 'https://mock-api.driven.com.br/api/v7/cineflex/movies'
     const [movies,setMovies]=useState(null);
 
     useEffect(()=>{
