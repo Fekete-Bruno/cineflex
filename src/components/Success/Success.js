@@ -4,6 +4,23 @@ import "./style.css";
 
 export  default function Success({orderData,setOrderData}){
     const blankOrder={}
+    const cpf=maskCpf();
+
+    function maskCpf(){
+        let cpf = orderData.cpf.replace(/[^0-9]/g,'');
+        const cpfarr=cpf.split('');
+        const newArr=[];
+        for(let i=0;i<cpfarr.length;i++){
+        if(i===3||i===6){
+            newArr.push('.');
+        } else if (i===9){
+            newArr.push('-');
+        }
+        newArr.push(cpfarr[i]);
+        }
+        return(newArr.join(''));
+    }
+    
     return(
         <div>
             <InnerHeader text={"Pedido feito com sucesso!"} color={"green"}/>
@@ -20,7 +37,7 @@ export  default function Success({orderData,setOrderData}){
 
                 <div className="strong">Comprador</div>
                 <div>Nome: {orderData.client}</div>
-                <div>CPF: {orderData.cpf}</div>
+                <div>CPF: {cpf}</div>
 
 
 

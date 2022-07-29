@@ -95,7 +95,7 @@ function ClientData({selectedSeats, orderData, seatsInfo}){
     const postURL ="https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many"
     const navigate = useNavigate();
     
-    const regex = /^\d{3}\.?\d{3}\.?\d{3}?\d{2}$/;
+    const regex = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/;
     
     function login (event) {
 		event.preventDefault();
