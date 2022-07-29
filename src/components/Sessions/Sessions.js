@@ -1,5 +1,6 @@
 import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
+import Footer from "../Footer/Footer";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -25,10 +26,7 @@ export default function Sessions(){
                         return(<Date date={date} key={date.id}/>);
                     })}
                 </div>
-                <div className="footer">
-                    <div className="img-container"><img src={movieInfo.posterURL} alt={movieInfo.title}/></div>
-                    <div className="title">{movieInfo.title}</div>
-                </div>
+                <Footer img={movieInfo.posterURL} title={movieInfo.title} />
                 </>
             ):('Carregando...')}
             

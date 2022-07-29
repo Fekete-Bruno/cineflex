@@ -1,0 +1,13 @@
+.footer{
+    display: flex;
+    box-sizing: border-box;
+    padding: 2vw;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width:100vw;
+    height: 16vh;
+    background-color: rgba(223, 230, 237, 1);
+    border: 1px solid rgba(158, 173, 186, 1);
+}
