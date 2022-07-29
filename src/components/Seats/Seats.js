@@ -2,7 +2,7 @@ import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useParams ,useNavigate} from "react-router-dom";
+import { useParams ,useNavigate} from "react-router-dom";
 
 export default function Seats({orderData}){
     const {sessionId} = useParams();
@@ -14,7 +14,7 @@ export default function Seats({orderData}){
         promise.then((response)=>{
             setSeatsInfo(response.data);
         })
-    },[])
+    },[apiURL])
 
     function addSeats(){
         const newArrayIds = seatsInfo.seats.filter((seat)=>{return (seat.clicked)}).map((seat)=>{return(seat.id)});
@@ -95,7 +95,7 @@ function ClientData({selectedSeats, orderData, seatsInfo}){
     const postURL ="https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many"
     const navigate = useNavigate();
     
-    const regex = /^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/;
+    const regex = /^\d{3}\.?\d{3}\.?\d{3}?\d{2}$/;
     
     function login (event) {
 		event.preventDefault();

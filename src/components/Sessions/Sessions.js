@@ -13,7 +13,7 @@ export default function Sessions(){
         promise.then((response)=>{
             setMovieInfo(response.data);
         })
-    },[])
+    },[apiURL])
 
     return(
         <div>
@@ -26,7 +26,7 @@ export default function Sessions(){
                     })}
                 </div>
                 <div className="footer">
-                    <div className="img-container"><img src={movieInfo.posterURL}/></div>
+                    <div className="img-container"><img src={movieInfo.posterURL} alt={movieInfo.title}/></div>
                     <div className="title">{movieInfo.title}</div>
                 </div>
                 </>

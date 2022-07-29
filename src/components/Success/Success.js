@@ -13,14 +13,14 @@ export  default function Success({orderData,setOrderData}){
                 <div>{orderData.date} {orderData.time}</div>
 
                 <div className="strong">Ingressos</div>
-                {orderData.seats.map((seat)=>{
-                    return(<div>Assento {seat}</div>)
+                {orderData.seats.map((seat,index)=>{
+                    return(<div key={index}>Assento {seat}</div>)
                 })}
 
 
                 <div className="strong">Comprador</div>
-                <div>{orderData.client}</div>
-                <div>{orderData.cpf}</div>
+                <div>Nome: {orderData.client}</div>
+                <div>CPF: {orderData.cpf}</div>
 
 
 
