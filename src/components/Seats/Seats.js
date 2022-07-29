@@ -1,6 +1,7 @@
 import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import ClientData from "../ClientData/ClientData";
+import Examples from "../Examples/Examples";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -65,26 +66,5 @@ function Seat({name , available, index, seatsInfo,addSeats}){
 
     return(
         <div onClick={testaAssento} className={"seat "+ available + " " + clicked}>{name}</div>
-    );
-}
-
-function Examples(){
-    return(
-        <div className="examples">
-            <div className="example">
-            <div className="seat true"></div>
-            Selecionado
-            </div>
-
-            <div className="example">
-            <div className="seat available"></div>
-            Disponível
-            </div>
-
-            <div className="example">
-            <div className="seat unavailable"></div>
-            Indisponível
-            </div>
-        </div>
     );
 }
