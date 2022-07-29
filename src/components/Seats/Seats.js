@@ -125,7 +125,7 @@ function ClientData({selectedSeats, orderData, seatsInfo}){
 
     
     return (
-		<form onSubmit={login}>
+		<form className="form" onSubmit={login}>
             <div>Nome do comprador:</div>
 		    <input type="text" required value={name} onChange={e => setName(e.target.value)} />
             <div>CPF do comprador:</div>

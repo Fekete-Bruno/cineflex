@@ -48,7 +48,6 @@ a{
 .date{
     padding: 2vw;
     width:100vw;
-    height: 7vh;
     color: rgba(41, 56, 69, 1);
 }
 
@@ -59,8 +58,8 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 4vh;
-    width:12vw;
+    height: 5vh;
+    width:15vw;
     background-color: rgba(232, 131, 58, 1);
     border-radius: 3px;
     margin: 3vw;
