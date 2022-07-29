@@ -1,10 +1,10 @@
-import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import ClientData from "../ClientData/ClientData";
 import Examples from "../Examples/Examples";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import SeatsList from "../SeatsList/SeatsList";
 
 export default function Seats({orderData}){
     const {sessionId} = useParams();
@@ -18,24 +18,12 @@ export default function Seats({orderData}){
         })
     },[apiURL])
 
-    function addSeats(){
-        const newArrayIds = seatsInfo.seats.filter((seat)=>{return (seat.clicked)}).map((seat)=>{return(seat.id)});
-        const newArrayNames = seatsInfo.seats.filter((seat)=>{return (seat.clicked)}).map((seat)=>{return(seat.name)});
-        setSelectedSeats([...newArrayIds]);
-        orderData.seats=newArrayNames;
-    }
-
     return(
         <div>
         <InnerHeader text={"Selecione o(s) assento(s)"} />
         {(!seatsInfo)?(<div>Carregando...</div>):(
             <>
-            <div className="seats">{
-                seatsInfo.seats.map((seat,index)=>{return(
-                <Seat key={seat.id} index={index} name={seat.name} available={(seat.isAvailable)?("available"):("unavailable")} seatsInfo={seatsInfo} addSeats={addSeats}/>
-                )})}
-            </div>
-
+            <SeatsList seats={seatsInfo.seats} setSelectedSeats={setSelectedSeats} orderData={orderData}/>
             <Examples/>
             <ClientData selectedSeats={selectedSeats} orderData={orderData} seatsInfo={seatsInfo}/>
 
@@ -49,22 +37,5 @@ export default function Seats({orderData}){
             </>
         )}
         </div>
-    );
-}
-function Seat({name , available, index, seatsInfo,addSeats}){
-    const [clicked,setClicked] = useState(false);
-
-    function testaAssento(){
-        if(available==="available"){
-            setClicked(!clicked);    
-            seatsInfo.seats[index].clicked=!clicked;
-            addSeats();
-        }else{
-            alert("Esse assento não está disponível...");
-        } 
-    }
-
-    return(
-        <div onClick={testaAssento} className={"seat "+ available + " " + clicked}>{name}</div>
     );
 }

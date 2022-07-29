@@ -1,3 +1,5 @@
+import "./style.css"
+
 export default function Examples(){
     return(
         <div className="examples">
