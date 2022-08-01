@@ -1,4 +1,4 @@
-import "./style.css"
+import "./style.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function ClientData({selectedSeats, orderData, seatsInfo}){
     const[name,setName] = useState("");
     const[cpf,setCpf] = useState("");
-    const postURL ="https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many"
+    const postURL ="https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many";
     const navigate = useNavigate();
     
     const regex = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/;
@@ -14,9 +14,9 @@ export default function ClientData({selectedSeats, orderData, seatsInfo}){
     function login (event) {
 		event.preventDefault();
         if(!regex.test(cpf)){
-            alert("Escreva o CPF novamente (na forma 12345678900 ou 123.456.789-00)")
+            alert("Escreva o CPF novamente (na forma 12345678900 ou 123.456.789-00)");
         } else if (selectedSeats.length===0){
-            alert("Selecione pelo menos um assento...")
+            alert("Selecione pelo menos um assento...");
         }else{
             const request = axios.post(postURL,
                 {

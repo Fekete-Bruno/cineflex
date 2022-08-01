@@ -17,7 +17,7 @@ export default function Seats({orderData}){
         promise.then((response)=>{
             setSeatsInfo(response.data);
         })
-    },[apiURL])
+    },[apiURL]);
 
     return(
         <div>

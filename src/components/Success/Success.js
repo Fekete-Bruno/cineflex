@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 export  default function Success({orderData,setOrderData}){
-    const blankOrder={}
+    const blankOrder={};
     const cpf=maskCpf();
 
     function maskCpf(){
@@ -31,15 +31,12 @@ export  default function Success({orderData,setOrderData}){
 
                 <div className="strong">Ingressos</div>
                 {orderData.seats.map((seat,index)=>{
-                    return(<div key={index}>Assento {seat}</div>)
+                    return(<div key={index}>Assento {seat}</div>);
                 })}
-
 
                 <div className="strong">Comprador</div>
                 <div>Nome: {orderData.client}</div>
                 <div>CPF: {cpf}</div>
-
-
 
                 <Link to="/">
                 <div className="home"onClick={()=>setOrderData({...blankOrder})}>Voltar pra home</div>
