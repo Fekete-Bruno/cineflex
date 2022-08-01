@@ -1,6 +1,7 @@
 import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import Footer from "../Footer/Footer";
+import Loading from "../Loading/Loading";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -28,7 +29,7 @@ export default function Sessions(){
                 </div>
                 <Footer img={movieInfo.posterURL} title={movieInfo.title} />
                 </>
-            ):('Carregando...')}
+            ):(<Loading />)}
             
             
         </div>

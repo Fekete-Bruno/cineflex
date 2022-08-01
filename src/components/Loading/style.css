@@ -1,0 +1,13 @@
+.loading{
+    width: 100%;
+    font-size: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(232, 131, 58, 1);
+}
+
+.loading img{
+    margin-top: 2vh;
+    width: 90%;
+}

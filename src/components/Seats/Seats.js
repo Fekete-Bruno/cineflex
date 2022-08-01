@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SeatsList from "../SeatsList/SeatsList";
+import Loading from "../Loading/Loading";
 
 export default function Seats({orderData}){
     const {sessionId} = useParams();
@@ -22,7 +23,7 @@ export default function Seats({orderData}){
     return(
         <div>
         <InnerHeader text={"Selecione o(s) assento(s)"} />
-        {(!seatsInfo)?(<div>Carregando...</div>):(
+        {(!seatsInfo)?(<Loading />):(
             <>
             <SeatsList seats={seatsInfo.seats} setSelectedSeats={setSelectedSeats} orderData={orderData}/>
             <Examples/>

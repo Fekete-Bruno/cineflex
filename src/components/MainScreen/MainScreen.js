@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import InnerHeader from "../InnerHeader/InnerHeader";
+import Loading from "../Loading/Loading";
 
 export default function MainScreen(){
     const apiURL = 'https://mock-api.driven.com.br/api/v7/cineflex/movies';
@@ -23,7 +24,7 @@ export default function MainScreen(){
             <div className="movies">
                 {(movies)?(movies.map((movie) => {
                     return(<Movie key={movie.id} movieId={movie.id} posterURL={movie.posterURL} title={movie.title} />);
-                    })):('Carregando...')
+                    })):(<Loading />)
                 }
             </div>
         </div>
