@@ -1,5 +1,5 @@
 import "./style.css";
-import InnerHeader from "../InnerHeader/InnerHeader";
+import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Loading from "../Loading/Loading";
 import ErrorScreen from "../ErrorScreen/ErrorScreen";
@@ -31,7 +31,7 @@ export default function Sessions(){
 
     return(
         <div>
-            <InnerHeader text={"Selecione o horário"} />
+            <Header text={"Selecione o horário"} />
             {(movieInfo)?(
                 <>
                 <div className="dates">

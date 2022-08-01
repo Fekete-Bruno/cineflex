@@ -1,4 +1,4 @@
-import InnerHeader from "../InnerHeader/InnerHeader";
+import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -23,7 +23,7 @@ export  default function Success({orderData,setOrderData}){
     
     return(
         <div>
-            <InnerHeader text={"Pedido feito com sucesso!"} color={"green"}/>
+            <Header text={"Pedido feito com sucesso!"} color={"green"}/>
             <div className="success-content">
                 <div className="strong">Filme e Sessão</div>
                 <div>{orderData.title}</div>

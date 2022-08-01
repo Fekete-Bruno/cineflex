@@ -1,4 +1,5 @@
 .header{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,4 +7,23 @@
     font-size: 4vh;
     color: rgba(232, 131, 58, 1);
     background-color: rgba(195, 207, 217, 1);
+}
+
+.back-button{
+    position: absolute;
+    top: 2vh;
+    left:10px;
+}
+
+.back-button:hover{
+    cursor: pointer;
+}
+
+.inner-screen-header{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(41, 56, 69, 1);
+    font-size: 2.5vh;
 }

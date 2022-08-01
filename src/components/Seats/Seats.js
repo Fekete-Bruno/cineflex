@@ -1,4 +1,4 @@
-import InnerHeader from "../InnerHeader/InnerHeader";
+import Header from "../Header/Header";
 import ClientData from "../ClientData/ClientData";
 import Examples from "../Examples/Examples";
 import Footer from "../Footer/Footer";
@@ -34,7 +34,7 @@ export default function Seats({orderData}){
 
     return(
         <div>
-        <InnerHeader text={"Selecione o(s) assento(s)"} />
+        <Header text={"Selecione o(s) assento(s)"} />
         {(!seatsInfo)?(<Loading />):(
             <>
             <SeatsList seats={seatsInfo.seats} setSelectedSeats={setSelectedSeats} orderData={orderData}/>

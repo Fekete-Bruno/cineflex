@@ -32,8 +32,7 @@ export default function ClientData({selectedSeats, orderData, seatsInfo}){
                 orderData.cpf = cpf;
                 navigate('/sucesso');
             });
-            request.catch(()=>alert("Ocorreu um erro durante a requisição."))
-            console.log(name,cpf,selectedSeats);
+            request.catch(()=>alert("Ocorreu um erro durante a requisição. Tente novamente mais tarde."));
         }
     }
 

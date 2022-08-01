@@ -2,7 +2,7 @@ import "./style.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import InnerHeader from "../InnerHeader/InnerHeader";
+import Header from "../Header/Header";
 import Loading from "../Loading/Loading";
 import ErrorScreen from "../ErrorScreen/ErrorScreen"; 
 
@@ -29,7 +29,7 @@ export default function MainScreen(){
 
     return(
         <div>
-            <InnerHeader text={"Selecione o filme"} />
+            <Header text={"Selecione o filme"} home={true} />
             <div className="movies">
                 {(movies)?(movies.map((movie) => {
                     return(<Movie key={movie.id} movieId={movie.id} posterURL={movie.posterURL} title={movie.title} />);
