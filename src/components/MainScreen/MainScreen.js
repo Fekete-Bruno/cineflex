@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import Loading from "../Loading/Loading";
+import ErrorScreen from "../ErrorScreen/ErrorScreen"; 
 
 export default function MainScreen(){
     const apiURL = 'https://mock-api.driven.com.br/api/v7/cineflex/movies';
     const [movies,setMovies]=useState(null);
+    const [errorState,setErrorState]=useState({state:false});
 
     useEffect(()=>{
         const promise = axios.get(apiURL);
@@ -15,8 +17,15 @@ export default function MainScreen(){
             setMovies(response.data);
         });
         promise.catch((error)=>{
-            setMovies([{id:-1, title:error.message, posterURL:`https://http.dog/${error.response.status}.jpg`}])});
+            const errorObj = {status: error.response.status};
+            setErrorState({...errorObj, state:true})});
     },[]);
+
+    if(errorState.state){
+        return(
+            <ErrorScreen status={errorState.status} />
+        );
+    }
 
     return(
         <div>

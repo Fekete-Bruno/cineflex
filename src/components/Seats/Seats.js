@@ -7,18 +7,30 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SeatsList from "../SeatsList/SeatsList";
 import Loading from "../Loading/Loading";
+import ErrorScreen from "../ErrorScreen/ErrorScreen";
 
 export default function Seats({orderData}){
     const {sessionId} = useParams();
     const apiURL= `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`
     const [seatsInfo, setSeatsInfo] = useState(null);
     const [selectedSeats,setSelectedSeats] = useState([]);
+    const [errorState,setErrorState]=useState({state:false});
+
     useEffect(()=>{
         const promise = axios.get(apiURL);
         promise.then((response)=>{
             setSeatsInfo(response.data);
         })
+        promise.catch((error)=>{
+            const errorObj = {status: error.response.status};
+            setErrorState({...errorObj, state:true})});
     },[apiURL]);
+
+    if(errorState.state){
+        return(
+            <ErrorScreen status={errorState.status} />
+        );
+    }
 
     return(
         <div>

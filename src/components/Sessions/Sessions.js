@@ -2,6 +2,7 @@ import "./style.css";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import Footer from "../Footer/Footer";
 import Loading from "../Loading/Loading";
+import ErrorScreen from "../ErrorScreen/ErrorScreen";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -10,12 +11,23 @@ export default function Sessions(){
     const {movieId} = useParams();
     const apiURL= `https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieId}/showtimes`;
     const [movieInfo, setMovieInfo] = useState(null);
+    const [errorState,setErrorState]=useState({state:false});
+
     useEffect(()=>{
         const promise = axios.get(apiURL);
         promise.then((response)=>{
             setMovieInfo(response.data);
         })
+        promise.catch((error)=>{
+            const errorObj = {status: error.response.status};
+            setErrorState({...errorObj, state:true})});
     },[apiURL]);
+
+    if(errorState.state){
+        return(
+            <ErrorScreen status={errorState.status} />
+        );
+    }
 
     return(
         <div>

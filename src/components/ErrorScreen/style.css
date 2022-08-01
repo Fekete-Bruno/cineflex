@@ -1,13 +1,13 @@
-.loading{
+.error{
     width: 100vw;
-    font-size: 10vw;
+    font-size: 5vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: rgba(232, 131, 58, 1);
 }
 
-.loading img{
-    margin-top: 2vh;
+.error img{
+    margin: 2vh;
     width: 90%;
 }
