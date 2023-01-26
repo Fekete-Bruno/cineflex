@@ -8,7 +8,8 @@ In case the API used for the movies breaks at some point in the future, I may cr
 - Shows available seats for a determined movie;
 - The user selects seats and confirms the ticket.
 
-
+## Vercel Deployment:
+- <a href="https://projeto9-cineflex-mu-ten.vercel.app/" target="_blank">Vercel Link</a>
 
 ## How to run:
 
